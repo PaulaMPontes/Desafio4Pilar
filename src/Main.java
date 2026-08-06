@@ -9,7 +9,7 @@ public class Main {
                 "super velocidade", "sopro congelante"};
         h.mostrar();
 
-        // O vilão consegue fazer isto. Por quê?
+        // O vilão consegue fazer isto. Por quê? ---
         h.altura = -300;
         h.nome = "";
         h.mostrar();
