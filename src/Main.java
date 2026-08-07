@@ -13,5 +13,11 @@ public class Main {
         h.altura = -300;
         h.nome = "";
         h.mostrar();
+
+        Personagem p = new Personagem();
+        p.nome = "bruno";
+        p.sexo = "HOMEM";
+        p.altura = 1.89;
+
     }
 }
