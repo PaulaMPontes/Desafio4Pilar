@@ -1,23 +1,12 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        SuperHeroi h = new SuperHeroi();
-        h.nome = "Lisiane Reips";
-        h.sexo = 1;
-        h.altura = 1.75;
-        h.identidadeSecreta = true;
-        h.habilidades = new String[] { "super força", "visão de raio-x", "voar",
-                "super velocidade", "sopro congelante" };
-        h.mostrar();
+        List<String> habilidadesIniciais = Arrays.asList("super força", "visão de raio-x", "voar", "super velocidade",
+                "sopro congelante");
 
-        // O vilão consegue fazer isto. Por quê? ---
-        h.altura = -300;
-        h.nome = "";
-        h.mostrar();
-        // a
-        // Personagem g = new Personagem();
-        // p.nome = "bruno";
-        // p.sexo = "HOMEM";
-        // p.altura = 1,89;
+        SuperHeroi h = new SuperHeroi("Lisiane Reips", Sexo.MULHER, -300, true, habilidadesIniciais);
 
     }
 }
