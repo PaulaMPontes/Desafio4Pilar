@@ -1,34 +1,28 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class SuperHeroi {
+public class SuperHeroi extends Personagem {
 
-    private String nome;
-    private Sexo sexo;
-    private double altura;
+    private String nomeDeGuerra;
     private boolean identidadeSecreta;
     private List<String> habilidades;
 
-    //a cópia defensiva é a responsável pelo impedimento de um código externo acessar e modificar o estado da lista original
+    public SuperHeroi(String nome, Sexo sexo, double altura,
+                      String nomeDeGuerra,
+                      boolean identidadeSecreta,
+                      List<String> habilidades) {
 
-    public SuperHeroi(String nome, Sexo sexo, double altura, boolean identidadeSecreta, List<String> habilidades) {
-        this.nome = nome;
-        this.sexo = sexo;
-        this.altura = altura;
+        super(nome, sexo, altura);
+
+        this.nomeDeGuerra = nomeDeGuerra;
         this.identidadeSecreta = identidadeSecreta;
-        this.habilidades = (habilidades != null) ? new ArrayList<>(habilidades) : new ArrayList<>();
+        this.habilidades = (habilidades != null)
+                ? new ArrayList<>(habilidades)
+                : new ArrayList<>();
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public Sexo getSexo() {
-        return sexo;
-    }
-
-    public double getAltura() {
-        return altura;
+    public String getNomeDeGuerra() {
+        return nomeDeGuerra;
     }
 
     public boolean isIdentidadeSecreta() {
@@ -39,18 +33,20 @@ public class SuperHeroi {
         if (identidadeSecreta) {
             return "??? (identidade protegida)";
         }
-        return nome;
+
+        return getNome();
     }
 
     public String revelarIdentidade() {
-        return nome;
+        return getNome();
     }
 
     public List<String> getHabilidades() {
         return new ArrayList<>(this.habilidades);
     }
 
+    @Override
     public String apresentar() {
-        return getIdentidade() + " - " + sexo.getDescricao() + " - " + altura + "m";
+        return getNomeDeGuerra() + " - " + getSexo().getDescricao() + " - " + getAltura() + "m";
     }
 }
