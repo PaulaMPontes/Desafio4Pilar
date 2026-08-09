@@ -1,41 +1,102 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        SuperHeroi heroi = new SuperHeroi(
+        List<String> habilidadesIniciais = Arrays.asList(
+                "super força",
+                "visão de raio-x",
+                "voar",
+                "super velocidade",
+                "sopro congelante"
+        );
+
+
+        SuperHeroi h = new SuperHeroi(
                 "Lisiane Reips",
                 Sexo.MULHER,
                 1.75,
-                "Profa. Código",
+                "Lis",
                 true,
-                Arrays.asList("super força", "visão de raio-x", "voar"));
+                habilidadesIniciais
+        );
 
-        Vilao vilao = new Vilao(
-                "Doutor Código-Espaguete",
+
+        SuperHeroi h2 = new SuperHeroi(
+                "Jean",
+                Sexo.MULHER,
+                1.68,
+                "Fênix",
+                false,
+                Arrays.asList("telepatia", "voar")
+        );
+
+
+        Vilao v = new Vilao(
+                "Dr Destino",
                 Sexo.HOMEM,
-                1.80,
-                10);
+                1.88,
+                10
+        );
 
-        List<Personagem> personagens = new ArrayList<>();
-        personagens.add(heroi);
-        personagens.add(vilao);
 
-        System.out.println("=== TESTANDO O POLIMORFISMO ===");
+        Vilao v2 = new Vilao(
+                "Lex",
+                Sexo.HOMEM,
+                1.92,
+                7
+        );
 
-        for (Personagem p : personagens) {
-            System.out.println(p.apresentar());
-            p.agir();
-            System.out.println(p.toString());
-            System.out.println("---------------------------------");
+
+        Civil c = new Civil(
+                "João",
+                Sexo.HOMEM,
+                1.75,
+                "Professor"
+        );
+
+
+        Civil c2 = new Civil(
+                "Ana",
+                Sexo.MULHER,
+                1.70,
+                "Médica"
+        );
+
+        Batalha batalha = new Batalha();
+
+        batalha.adicionar(h);
+        batalha.adicionar(h2);
+        batalha.adicionar(v);
+        batalha.adicionar(v2);
+        batalha.adicionar(c);
+        batalha.adicionar(c2);
+
+        System.out.println("-- BATALHA --");
+        batalha.iniciar();
+
+        System.out.println("\n-- HERÓIS --");
+        for (SuperHeroi heroi : batalha.listarHerois()) {
+            System.out.println(heroi.getNomeDeGuerra());
         }
 
-        System.out.println("=== TESTANDO SOBRECARGAS DO HERÓI ===");
-        heroi.usarHabilidade();
-        heroi.usarHabilidade(1);
-        heroi.usarHabilidade(99);
-        heroi.usarHabilidade("Sopro congelante");
+        System.out.println("\n-- MAIS ALTO --");
+        Personagem maisAlto = batalha.maisAlto();
+
+        if (maisAlto != null) {
+            System.out.println(
+                    maisAlto.getNome() + " - " +
+                            maisAlto.getAltura() + "m"
+            );
+        }
+
+        System.out.println("\n-- REMOÇÃO --");
+        batalha.removerDerrotado("Lis");
+
+        System.out.println("Heróis após remoção:");
+        for (SuperHeroi heroi : batalha.listarHerois()) {
+            System.out.println(heroi.getNomeDeGuerra());
+        }
     }
 }
