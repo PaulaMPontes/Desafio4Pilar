@@ -8,9 +8,9 @@ public class SuperHeroi extends Personagem {
     private List<String> habilidades;
 
     public SuperHeroi(String nome, Sexo sexo, double altura,
-                      String nomeDeGuerra,
-                      boolean identidadeSecreta,
-                      List<String> habilidades) {
+            String nomeDeGuerra,
+            boolean identidadeSecreta,
+            List<String> habilidades) {
 
         super(nome, sexo, altura);
 
@@ -48,5 +48,26 @@ public class SuperHeroi extends Personagem {
     @Override
     public String apresentar() {
         return getNomeDeGuerra() + " - " + getSexo().getDescricao() + " - " + getAltura() + "m";
+    }
+
+    @Override
+    public void agir() {
+        System.out.println("O herói usou uma habilidade!");
+    }
+
+    public void usarHabilidade() {
+        System.out.println("Usou a primeira habilidade: " + habilidades.get(0));
+    }
+
+    public void usarHabilidade(int indice) {
+        if (indice >= 0 && indice < habilidades.size()) {
+            System.out.println("Usou: " + habilidades.get(indice));
+        } else {
+            System.out.println("Habilidade falhou.");
+        }
+    }
+
+    public void usarHabilidade(String nome) {
+        System.out.println("Tentou usar: " + nome);
     }
 }

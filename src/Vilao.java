@@ -1,5 +1,6 @@
 public class Vilao extends Personagem {
-//vilao nao é subclasse de superheroi pois, as duas classes sao especializações de personagem e possuem caracteristicas proprias
+    // vilao nao é subclasse de superheroi pois, as duas classes sao especializações
+    // de personagem e possuem caracteristicas proprias
     private int nivelDeAmeaca;
 
     public Vilao(String nome, Sexo sexo, double altura, int nivelDeAmeaca) {
@@ -8,8 +9,7 @@ public class Vilao extends Personagem {
 
         if (nivelDeAmeaca < 1 || nivelDeAmeaca > 10) {
             throw new IllegalArgumentException(
-                    "Nível de ameaça deve estar entre 1 e 10."
-            );
+                    "Nível de ameaça deve estar entre 1 e 10.");
         }
 
         this.nivelDeAmeaca = nivelDeAmeaca;
@@ -21,6 +21,13 @@ public class Vilao extends Personagem {
 
     @Override
     public String apresentar() {
-        return getNome() + " - " + getSexo().getDescricao() + " - " + getAltura() + "m - Nível de ameaça: " + nivelDeAmeaca;
+        return getNome() + " - " + getSexo().getDescricao() + " - " + getAltura() + "m - Nível de ameaça: "
+                + nivelDeAmeaca;
+
+    }
+
+    @Override
+    public void agir() {
+        System.out.println("O vilão atacou a cidade com força de nível " + nivelDeAmeaca + "!");
     }
 }
