@@ -9,6 +9,8 @@ public class SuperHeroi {
     private boolean identidadeSecreta;
     private List<String> habilidades;
 
+    //a cópia defensiva é a responsável pelo impedimento de um código externo acessar e modificar o estado da lista original
+
     public SuperHeroi(String nome, Sexo sexo, double altura, boolean identidadeSecreta, List<String> habilidades) {
         this.nome = nome;
         this.sexo = sexo;
